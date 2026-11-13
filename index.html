@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NoktuaLabs — apps pour le Mac et la TV</title>
+<style>
+@font-face{font-family:"Space Grotesk";src:url(assets/SpaceGrotesk-Variable.ttf) format("truetype");font-weight:300 700}
+:root{--nuit:#0B1220;--nuit2:#13234A;--bleu:#3DA5FF;--blanc:#F3F5F9;--gris:#8FB8E0;--sourd:#6B7A93;
+  --sys:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nuit);color:var(--blanc);font-family:var(--sys);-webkit-font-smoothing:antialiased}
+h1,h2,h3,.titre{font-family:"Space Grotesk",var(--sys)}
+a{color:inherit}
+
+/* ---------- en-tête ---------- */
+.hero{min-height:min(88vh,860px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;
+  background:radial-gradient(1200px 600px at 50% 0%,#1B3366 0%,transparent 70%),linear-gradient(180deg,var(--nuit2) 0%,var(--nuit) 100%);position:relative;overflow:hidden}
+.hero .etoiles{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 22%,#fff8,transparent),radial-gradient(1px 1px at 78% 14%,#fff6,transparent),
+  radial-gradient(1.5px 1.5px at 64% 38%,#fff5,transparent),radial-gradient(1px 1px at 30% 64%,#fff4,transparent),radial-gradient(1px 1px at 88% 58%,#fff6,transparent),
+  radial-gradient(1px 1px at 46% 12%,#fff7,transparent),radial-gradient(1.5px 1.5px at 8% 80%,#fff3,transparent);opacity:.8}
+.badge{width:132px;height:132px;filter:drop-shadow(0 18px 40px #3DA5FF44);animation:flotte 6s ease-in-out infinite}
+@keyframes flotte{50%{transform:translateY(-8px)}}
+.hero h1{font-size:clamp(48px,8vw,92px);font-weight:700;letter-spacing:-.02em;margin:28px 0 0;line-height:1}
+.hero h1 span{color:var(--bleu);font-weight:500}
+.hero .sous{font-family:"Space Grotesk";letter-spacing:.32em;color:var(--gris);font-size:15px;margin-top:14px}
+.hero p.accroche{font-size:clamp(20px,2.4vw,26px);color:#C9D6EA;max-width:640px;line-height:1.45;margin:36px 0 0}
+.plates{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.plates a{display:flex;align-items:center;gap:10px;text-decoration:none;padding:10px 16px 10px 10px;border-radius:14px;background:#ffffff0d;border:1px solid #ffffff1a;font-weight:600;font-size:15px;transition:.2s}
+.plates a:hover{background:#ffffff1a;transform:translateY(-2px)}
+.plates img{width:30px;height:30px;border-radius:8px}
+
+/* ---------- sections ---------- */
+.plateforme{max-width:1180px;margin:0 auto;padding:110px 24px 0}
+.plateforme>.etiquette{font-family:"Space Grotesk";color:var(--bleu);letter-spacing:.28em;font-size:13px;font-weight:600}
+.plateforme>h2{font-size:clamp(32px,4vw,46px);margin:10px 0 0;letter-spacing:-.01em}
+.app{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center;padding:80px 0;border-bottom:1px solid #ffffff10}
+.app:nth-of-type(even){grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.app:nth-of-type(even) .texte{order:2}
+.app .tete{display:flex;align-items:center;gap:16px}
+.app .tete img{width:64px;height:64px;border-radius:15px;box-shadow:0 10px 30px #0008}
+.app h3{font-size:30px;margin:0}
+.app .promesse{font-family:"Space Grotesk";font-size:clamp(26px,3vw,34px);font-weight:600;line-height:1.2;margin:26px 0 14px;letter-spacing:-.01em}
+.app .detail{color:#AFC0D8;font-size:17px;line-height:1.6;margin:0}
+.dl{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:12px 20px;border-radius:12px;background:var(--bleu);color:#04101F;text-decoration:none;font-weight:700;font-size:15px;transition:.2s}
+.dl:hover{background:#6CBBFF;transform:translateY(-2px)}
+.dl small{font-weight:500;opacity:.7}
+
+/* ---------- décor Mac commun ---------- */
+.ecran{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 30px 80px #000a,0 0 0 1px #ffffff14;
+  background:radial-gradient(800px 500px at 20% 110%,#E0785A 0%,transparent 60%),radial-gradient(700px 500px at 90% 100%,#7A4FD8 0%,transparent 60%),linear-gradient(180deg,#2B4C8C,#5B6FB8 60%,#C77FA0)}
+.barre{position:absolute;top:0;left:0;right:0;height:34px;background:#1d1f27b8;backdrop-filter:blur(20px);display:flex;align-items:center;padding:0 14px;gap:14px;color:#fff;font:500 13px var(--sys)}
+.barre .pomme{font-size:15px}
+.barre .menus{display:flex;gap:16px;opacity:.92}
+.barre .menus b{font-weight:700}
+.barre .droite{margin-left:auto;display:flex;align-items:center;gap:13px}
+.ico{width:16px;height:16px;display:inline-block;border-radius:4px;background:#ffffffd9;flex:none}
+.ico.r{border-radius:50%}
+.ico.l{width:24px;border-radius:3px}
+.heure{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- BarSweeper ---------- */
+.ecran.bs,.ecran.cu{aspect-ratio:16/7}
+.bs .barre,.cu .barre{height:52px;font-size:17px;gap:18px;padding:0 18px}
+.bs .menus span:nth-child(n+3),.cu .menus span:nth-child(n+3){display:none}
+.bs .barre .droite,.cu .barre .droite{gap:16px}
+.bs .ico,.cu .ico{width:19px;height:19px}.bs .ico.l,.cu .ico.l{width:30px}
+.bs .tiroir{top:62px;right:150px}.cu .notif{top:64px}
+.bs .cachables{display:flex;gap:13px;align-items:center;overflow:hidden;max-width:330px;animation:range 7s ease-in-out infinite}
+@keyframes range{0%,22%{max-width:330px;opacity:1}38%,88%{max-width:0;opacity:0}100%{max-width:330px;opacity:1}}
+.bs .balai{width:18px;height:18px;display:grid;place-items:center;font-size:14px}
+.bs .tiroir{position:absolute;top:42px;right:120px;display:flex;gap:13px;padding:9px 14px;border-radius:10px;background:#1d1f27e6;backdrop-filter:blur(20px);box-shadow:0 10px 30px #0006;
+  opacity:0;transform:translateY(-8px);animation:tiroir 7s ease-in-out infinite}
+@keyframes tiroir{0%,52%{opacity:0;transform:translateY(-8px)}58%,78%{opacity:1;transform:none}84%,100%{opacity:0;transform:translateY(-8px)}}
+.bs .curseur{position:absolute;top:60px;right:60px;width:18px;height:18px;animation:curseur 7s ease-in-out infinite}
+@keyframes curseur{0%,40%{transform:translate(0,60px);opacity:0}46%{opacity:1}52%,78%{transform:translate(-62px,-48px);opacity:1}88%,100%{transform:translate(0,60px);opacity:0}}
+.legende{position:absolute;left:24px;bottom:22px;font:600 14px "Space Grotesk";padding:8px 14px;border-radius:999px;background:#0B1220aa;backdrop-filter:blur(10px)}
+.bs .legende span{animation:leg 7s steps(1) infinite}
+.bs .legende .l2{display:none}
+
+/* ---------- ClaudeUsage ---------- */
+.cu .jauge{display:flex;align-items:center;gap:6px;font-weight:700}
+.cu .cld{font:800 7px/7px var(--sys);writing-mode:vertical-lr;text-orientation:upright;letter-spacing:-1px}
+.cu .pile{width:13px;height:20px;border:1.5px solid #fff;border-radius:4px;position:relative;overflow:hidden}
+.cu .pile i{position:absolute;bottom:2px;width:3.5px;border-radius:1px}
+.cu .pile .h5{left:2px;background:#3B82F6;animation:h5 9s ease-in-out infinite}
+.cu .pile .sem{right:2px;background:#E8445A;height:30%}
+@keyframes h5{0%{height:20%}70%,92%{height:82%}100%{height:20%}}
+.cu .pct{min-width:34px;font-variant-numeric:tabular-nums}
+.cu .pct::after{content:"24%";animation:pct 9s steps(1) infinite}
+@keyframes pct{0%{content:"24%"}12%{content:"38%"}24%{content:"51%"}36%{content:"63%"}48%{content:"74%"}60%{content:"86%"}70%{content:"91%"}96%{content:"24%"}}
+.cu .notif{position:absolute;top:46px;right:14px;width:330px;padding:12px 14px;border-radius:14px;background:#2a2c35e8;backdrop-filter:blur(20px);display:flex;gap:12px;align-items:flex-start;
+  box-shadow:0 12px 30px #0007;transform:translateX(380px);animation:notif 9s ease-in-out infinite;font-size:13px;line-height:1.35}
+.cu .notif img{width:34px;height:34px;border-radius:8px}
+.cu .notif b{display:block;margin-bottom:2px}
+@keyframes notif{0%,68%{transform:translateX(380px)}73%,92%{transform:none}97%,100%{transform:translateX(380px)}}
+
+/* ---------- ProximityLock ---------- */
+.pl .scene{position:absolute;inset:34px 0 0;display:grid;place-items:center}
+.pl .verrou{position:absolute;inset:0;background:#05080fcc;backdrop-filter:blur(14px);display:grid;place-items:center;opacity:0;animation:verrou 8s ease-in-out infinite;text-align:center}
+.pl .verrou .cad{font-size:44px}
+.pl .verrou b{display:block;font:600 22px "Space Grotesk";margin-top:6px}
+@keyframes verrou{0%,56%{opacity:0}62%,86%{opacity:1}92%,100%{opacity:0}}
+.pl .piste{position:absolute;left:8%;right:8%;bottom:16%;height:10px;border-radius:5px;background:linear-gradient(90deg,#C0392B 0 28%,#E09B2D 28% 40%,#2FA35A 40% 100%)}
+.pl .piste::before,.pl .piste::after{position:absolute;top:18px;font:600 12px var(--sys);color:#fffc}
+.pl .piste::before{content:"loin";left:0}
+.pl .piste::after{content:"près du Mac";right:0}
+.pl .montre{position:absolute;bottom:calc(16% + 18px);width:38px;height:46px;margin-left:-19px;animation:part 8s ease-in-out infinite}
+.pl .montre i{position:absolute;inset:6px 4px;border-radius:9px;background:#111;border:2px solid #ddd;display:grid;place-items:center;font:700 10px var(--sys);color:#2FA35A}
+.pl .montre::before,.pl .montre::after{content:"";position:absolute;left:11px;right:11px;height:8px;background:#9aa;border-radius:2px}
+.pl .montre::before{top:0}.pl .montre::after{bottom:0}
+@keyframes part{0%,8%{left:86%}50%,70%{left:14%}92%,100%{left:86%}}
+.pl .bureau{width:56%;height:46%;border-radius:12px;background:#ffffff14;border:1px solid #ffffff22;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:12%}
+.pl .bureau span{height:10px;border-radius:5px;background:#ffffff2a}
+.pl .bureau span:nth-child(2){width:80%}.pl .bureau span:nth-child(3){width:60%}.pl .bureau span:nth-child(4){width:70%}
+.pl .avert{position:absolute;top:14px;right:14px;padding:10px 14px;border-radius:12px;background:#2a2c35e8;font-size:13px;opacity:0;animation:avert 8s ease-in-out infinite}
+@keyframes avert{0%,34%{opacity:0}38%,54%{opacity:1}58%,100%{opacity:0}}
+
+/* ---------- ClipKeeper ---------- */
+.ck .fen{position:absolute;top:58px;left:50%;width:62%;margin-left:-31%;border-radius:14px;background:#24262ef0;backdrop-filter:blur(30px);box-shadow:0 20px 50px #0009;overflow:hidden;font-size:13px}
+.ck .onglets{display:flex;gap:6px;padding:12px 12px 6px}
+.ck .onglets span{flex:1;text-align:center;padding:5px;border-radius:7px;color:#bbb}
+.ck .onglets span:first-child{background:#ffffff1a;color:#fff}
+.ck .liste{padding:4px 10px 12px;display:flex;flex-direction:column;gap:2px}
+.ck .el{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+.ck .el .pi{width:26px;height:26px;border-radius:7px;flex:none}
+.ck .el .t{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ck .el .t small{display:block;color:#999;font-size:11px}
+.ck .el time{color:#999;font-size:11px}
+.ck .nouveau{animation:arrive 6s ease-out infinite}
+@keyframes arrive{0%,18%{max-height:0;opacity:0;padding:0 8px;background:#3DA5FF55}30%{max-height:60px;opacity:1;padding:8px;background:#3DA5FF55}60%,100%{max-height:60px;opacity:1;background:transparent}}
+.ck .touche{position:absolute;bottom:22px;right:24px;display:flex;gap:6px;animation:appui 6s ease-in-out infinite}
+.ck .touche kbd{font:600 15px var(--sys);padding:8px 12px;border-radius:9px;background:#f3f5f9;color:#222;box-shadow:0 3px 0 #9aa3b2}
+@keyframes appui{0%,10%{opacity:0;transform:translateY(6px)}14%,24%{opacity:1;transform:none}28%,100%{opacity:0}}
+
+/* ---------- GlinTV ---------- */
+.app.tv{display:block}
+.tvcadre{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 40px 100px #000c,0 0 0 10px #15171d,0 0 0 11px #ffffff18;margin-top:40px}
+.tvcadre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:fondu 12s ease-in-out infinite}
+.tvcadre img:nth-child(2){animation-delay:-6s}
+@keyframes fondu{0%,42%{opacity:1;transform:scale(1.0)}50%,92%{opacity:0;transform:scale(1.03)}100%{opacity:1}}
+.tvtexte{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;margin-top:48px}
+.points{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.points span{padding:7px 13px;border-radius:999px;background:#ffffff0f;border:1px solid #ffffff1a;font-size:14px;color:#C9D6EA}
+
+/* ---------- pied ---------- */
+.confiance{max-width:1180px;margin:110px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.confiance div{padding:26px;border-radius:18px;background:#ffffff08;border:1px solid #ffffff12}
+.confiance b{font-family:"Space Grotesk";font-size:19px;display:block;margin-bottom:8px}
+.confiance p{margin:0;color:#AFC0D8;line-height:1.55;font-size:15px}
+footer{text-align:center;color:var(--sourd);padding:80px 24px 60px;font-size:14px}
+footer img{width:40px;opacity:.8;display:block;margin:0 auto 12px}
+
+@media (max-width:860px){.app,.app:nth-of-type(even){grid-template-columns:1fr;gap:32px}.app:nth-of-type(even) .texte{order:0}.tvtexte,.confiance{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+.ecran.capture{aspect-ratio:16/10;background:#0b1020}
+.ecran.capture img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block}
+.plus{display:inline-block;margin:28px 0 0 18px;color:#AFC0D8;text-decoration:none;font-weight:600;font-size:15px}
+.plus:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="etoiles"></div>
+  <img class="badge" src="assets/badge.png" alt="Chouette NoktuaLabs">
+  <h1>Noktua<span>Labs</span></h1>
+  <div class="sous">APPS · HUMAIN × IA</div>
+  <p class="accroche">Des petites apps pour le Mac et la TV.<br>Chacune règle un agacement du quotidien, puis se fait oublier.</p>
+  <nav class="plates">
+    <a href="#barsweeper"><img src="assets/ic-barsweeper.png" alt="">BarSweeper</a>
+    <a href="#clipkeeper"><img src="assets/ic-clipkeeper.png" alt="">ClipKeeper</a>
+    <a href="#proximitylock"><img src="assets/ic-proximitylock.png" alt="">ProximityLock</a>
+    <a href="#claudeusage"><img src="assets/ic-claudeusage.png" alt="">ClaudeUsage</a>
+    <a href="#glintv"><img src="assets/ic-glintv.png" alt="">GlinTV</a>
+  </nav>
+</header>
+
+<main>
+<section class="plateforme">
+  <div class="etiquette">MACOS</div>
+  <h2>Pour le Mac</h2>
+
+  <article class="app" id="barsweeper">
+    <div class="texte">
+      <div class="tete"><img src="assets/ic-barsweeper.png" alt=""><h3>BarSweeper</h3></div>
+      <div class="promesse">La barre des menus, enfin respirable.</div>
+      <p class="detail">Les icônes dont vous n'avez pas besoin en permanence quittent la barre. Elles reviennent au survol, ou d'un raccourci, dans une barre additionnelle. L'écran à encoche a son propre réglage.</p>
+      <a class="dl" href="https://github.com/NoktuaLabs/BarSweeper-releases/releases/latest">Télécharger <small>macOS</small></a><a class="plus" href="https://github.com/NoktuaLabs/BarSweeper-releases">En savoir plus →</a>
+    </div>
+    <div class="ecran capture"><img src="assets/barsweeper.jpg" alt="BarSweeper : captures de l'app" loading="lazy"></div>
+  </article>
+
+  <article class="app" id="clipkeeper">
+    <div class="texte">
+      <div class="tete"><img src="assets/ic-clipkeeper.png" alt=""><h3>ClipKeeper</h3></div>
+      <div class="promesse">Tout ce que vous avez copié, à un raccourci.</div>
+      <p class="detail">Textes, liens, fichiers, images : l'historique se garde tout seul, se fouille en quelques lettres et colle d'un clic. Les mots de passe copiés depuis un gestionnaire restent masqués.</p>
+      <a class="dl" href="https://github.com/NoktuaLabs/ClipKeeper-releases/releases/latest">Télécharger <small>macOS</small></a><a class="plus" href="https://github.com/NoktuaLabs/ClipKeeper-releases">En savoir plus →</a>
+    </div>
+    <div class="ecran capture"><img src="assets/clipkeeper.jpg" alt="ClipKeeper : captures de l'app" loading="lazy"></div>
+  </article>
+
+  <article class="app" id="proximitylock">
+    <div class="texte">
+      <div class="tete"><img src="assets/ic-proximitylock.png" alt=""><h3>ProximityLock</h3></div>
+      <div class="promesse">Vous vous levez, le Mac se verrouille.</div>
+      <p class="detail">ProximityLock suit le signal de votre Apple Watch. En limite de portée, il prévient ; quand vous êtes parti, il verrouille. Les seuils s'ajustent à votre bureau.</p>
+      <a class="dl" href="https://github.com/NoktuaLabs/ProximityLock-releases/releases/latest">Télécharger <small>macOS</small></a><a class="plus" href="https://github.com/NoktuaLabs/ProximityLock-releases">En savoir plus →</a>
+    </div>
+    <div class="ecran capture"><img src="assets/proximitylock.jpg" alt="ProximityLock : captures de l'app" loading="lazy"></div>
+  </article>
+
+  <article class="app" id="claudeusage">
+    <div class="texte">
+      <div class="tete"><img src="assets/ic-claudeusage.png" alt=""><h3>ClaudeUsage</h3></div>
+      <div class="promesse">Votre quota Claude, d'un coup d'œil.</div>
+      <p class="detail">Les jauges des 5 heures et de la semaine vivent dans la barre des menus, aux couleurs de votre choix. Et si vous le souhaitez, une notification vous prévient avant la limite.</p>
+      <a class="dl" href="https://github.com/NoktuaLabs/ClaudeUsage-releases/releases/latest">Télécharger <small>macOS</small></a><a class="plus" href="https://github.com/NoktuaLabs/ClaudeUsage-releases">En savoir plus →</a>
+    </div>
+    <div class="ecran capture"><img src="assets/claudeusage.jpg" alt="ClaudeUsage : captures de l'app" loading="lazy"></div>
+  </article>
+</section>
+
+<section class="plateforme">
+  <div class="etiquette">ANDROID TV</div>
+  <h2>Pour la TV</h2>
+  <article class="app tv" id="glintv">
+    <div class="tvcadre"><img src="assets/glintv-accueil-hiver-sans-mention.jpg" alt="GlinTV : un paysage d'hiver derrière l'horloge"><img src="assets/glintv-accueil-ete-sans-mention.jpg" alt="GlinTV : un paysage d'été"></div>
+    <div class="tvtexte">
+      <div>
+        <div class="tete"><img src="assets/ic-glintv.png" alt=""><h3>GlinTV</h3></div>
+        <div class="promesse">Un écran d'accueil qu'on regarde.</div>
+        <p class="detail">De grands fonds photo qui se renouvellent, et une horloge qui se glisse derrière le relief : montagnes, rochers, immeubles. La météo, vos apps sur un rang, rien de plus.</p>
+        <div class="points"><span>Effet de profondeur</span><span>Fonds renouvelés</span><span>Scènes animées</span><span>Météo</span><span>Android TV 9+</span></div>
+      </div>
+      <a class="dl" href="https://github.com/NoktuaLabs/GlinTV-releases/releases/latest">Télécharger <small>Android TV</small></a><a class="plus" href="https://github.com/NoktuaLabs/GlinTV-releases">En savoir plus →</a>
+    </div>
+  </article>
+</section>
+
+<section class="confiance">
+  <div><b>Signées</b><p>Chaque app est signée ; chaque nouvelle version est vérifiée avant d'être installée.</p></div>
+  <div><b>À jour d'elles-mêmes</b><p>Sur le Mac, chaque nouvelle version est proposée, ou installée seule si vous le choisissez. Sur la TV, GlinTV les trouve et Android demande confirmation.</p></div>
+  <div><b>Humain × IA</b><p>Pensées et arbitrées par un humain, construites en partenariat avec une IA, essayées sur de vraies machines.</p></div>
+</section>
+</main>
+
+<footer><img src="assets/badge.png" alt="">NoktuaLabs · <a href="https://github.com/NoktuaLabs">github.com/NoktuaLabs</a></footer>
+</body>
+</html>
