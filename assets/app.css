@@ -1,0 +1,86 @@
+/* Pages des apps : même univers que l'accueil (nuit, bleu, Space Grotesk). */
+@font-face{font-family:"Space Grotesk";src:url(SpaceGrotesk-Variable.ttf) format("truetype");font-weight:300 700}
+:root{--nuit:#0B1220;--nuit2:#13234A;--bleu:#3DA5FF;--blanc:#F3F5F9;--gris:#8FB8E0;--texte:#C3D0E4;--sourd:#7F8CA3;
+  --sys:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nuit);color:var(--blanc);font-family:var(--sys);-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,.marque{font-family:"Space Grotesk",var(--sys)}
+a{color:var(--bleu)}
+img{max-width:100%}
+
+/* ---------- barre du haut ---------- */
+.nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:12px 28px;background:#0B1220d9;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff10}
+.nav .marque{display:flex;align-items:center;gap:10px;color:var(--blanc);text-decoration:none;font-weight:700;font-size:18px;margin-right:auto}
+.nav .marque img{width:30px;height:30px}
+.nav .apps{display:flex;gap:6px}
+.nav .apps a{display:block;padding:4px;border-radius:10px;opacity:.55;transition:.2s}
+.nav .apps a:hover,.nav .apps a.ici{opacity:1;background:#ffffff12}
+.nav .apps img{width:28px;height:28px;border-radius:7px;display:block}
+
+/* ---------- en-tête ----------
+   Le visuel (2:1) est le bandeau de l'app sans son texte : le texte est posé
+   par-dessus, à la place qu'il occupait, et reste lisible pour Google. */
+.tete{max-width:1280px;margin:24px auto 0;padding:0 24px}
+.tete .cadre{position:relative;aspect-ratio:2/1;border-radius:26px;overflow:hidden;background:var(--fond) center/cover no-repeat;box-shadow:0 30px 80px #000a,0 0 0 1px #ffffff14;display:flex;align-items:center}
+.tete .bloc{margin-left:6.25%;width:38%}
+.tete .icone{width:clamp(64px,7vw,96px);height:auto;border-radius:22%;filter:drop-shadow(0 14px 30px #0007)}
+.tete h1{font-size:clamp(40px,5.2vw,66px);line-height:1;letter-spacing:-.02em;margin:.3em 0 .25em}
+.tete .accroche{font-size:clamp(17px,1.9vw,24px);line-height:1.38;color:#EEF2F8;margin:0 0 1em;font-weight:500}
+.puces{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 1.6em}
+.puces span{font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px;background:#ffffff1f;border:1px solid #ffffff2e}
+.sous{display:flex;gap:14px 26px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:22px 4px 0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.dl{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;background:var(--bleu);color:#04101F;text-decoration:none;font-weight:700;font-size:16px;transition:.2s}
+.dl:hover{background:#6CBBFF;transform:translateY(-2px)}
+.dl small{font-weight:500;opacity:.7}
+.dl.sec{background:#ffffff14;color:var(--blanc);border:1px solid #ffffff2a}
+.dl.sec:hover{background:#ffffff24}
+.exigences{color:#AFC0D8;font-size:14px;margin:0}
+.code{margin:18px 4px 0;font-size:15px;color:#DCE5F2;background:#ffffff0a;border:1px solid #ffffff1f;border-radius:12px;padding:10px 14px;display:inline-block}
+.code b{color:var(--blanc);font-size:17px;letter-spacing:.06em}
+/* Écran étroit : le bloc texte passe au-dessus, le visuel garde ses proportions. */
+@media (max-width:1000px){
+  .tete .cadre{flex-direction:column;align-items:stretch;aspect-ratio:auto;background:linear-gradient(180deg,var(--nuit2),var(--nuit))}
+  .tete .bloc{width:auto;margin:0;padding:36px 28px 24px}
+  .tete .cadre::after{content:"";display:block;aspect-ratio:2/1;background:var(--fond) center/cover no-repeat}
+}
+
+/* ---------- contenu ---------- */
+main{max-width:980px;margin:0 auto;padding:10px 28px 40px}
+main>p,main li{color:var(--texte);font-size:17px}
+main>p.intro{font-size:20px;color:#DCE5F2;margin-top:56px}
+h2{font-size:clamp(28px,3.4vw,38px);letter-spacing:-.01em;margin:80px 0 22px;scroll-margin-top:80px}
+main b,main strong{color:var(--blanc)}
+code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;background:#ffffff14;padding:.15em .45em;border-radius:6px;color:#DCE5F2;overflow-wrap:anywhere}
+.etapes{border-radius:16px;box-shadow:0 24px 60px #0008;display:block;margin:0 auto 26px}
+.atouts{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.atout{background:#ffffff08;border:1px solid #ffffff12;border-radius:18px;padding:16px 16px 20px;color:var(--texte);font-size:16px}
+.atout img{display:block;width:100%;border-radius:11px;margin-bottom:14px}
+.atout b:first-of-type{display:block;font:600 20px/1.3 "Space Grotesk",var(--sys);margin-bottom:6px}
+.atout br{display:none}
+ol,ul{padding-left:1.4em}
+li{margin:8px 0}
+li::marker{color:var(--bleu);font-weight:700}
+details{border:1px solid #ffffff16;border-radius:14px;background:#ffffff06;margin:0 0 12px;padding:0 20px}
+details[open]{background:#ffffff0a}
+summary{cursor:pointer;padding:16px 0;font-weight:600;font-size:17px;list-style:none;display:flex;gap:12px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";color:var(--bleu);font:700 20px/1 "Space Grotesk";width:14px;flex:none}
+details[open] summary::before{content:"–"}
+details>:not(summary){color:var(--texte);font-size:16px}
+details>:last-child{margin-bottom:18px}
+.mention{color:var(--sourd);font-size:14px;margin-top:40px}
+
+/* ---------- pied ---------- */
+.autres{max-width:980px;margin:90px auto 0;padding:0 28px}
+.autres h2{margin-top:0}
+.autres .liste{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.autres a{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:#ffffff08;border:1px solid #ffffff12;text-decoration:none;color:var(--blanc);transition:.2s}
+.autres a:hover{background:#ffffff14;transform:translateY(-2px)}
+.autres img{width:44px;height:44px;border-radius:11px}
+.autres span{display:block;font-size:13px;color:var(--sourd);line-height:1.35}
+footer{display:flex;align-items:center;justify-content:center;gap:10px;padding:60px 20px 50px;color:var(--sourd);font-size:14px}
+footer img{width:22px;height:22px}
+footer a{color:inherit}
+@media (max-width:700px){.atouts{grid-template-columns:1fr}.nav{padding:10px 16px}.nav .apps{display:none}main{padding:0 20px}}
